@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<link rel="stylesheet" type="text/css" href="astyle.css">
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+		<script>
+	 // DOM ready
+	 $(function() {
+	   
+      // Create the dropdown base
+      $("<select />").appendTo("nav");
+      
+      // Create default option "Go to..."
+      $("<option />", {
+         "selected": "selected",
+         "value"   : "",
+         "text"    : "Go to..."
+      }).appendTo("nav select");
+      
+      // Populate dropdown with menu items
+      $("nav a").each(function() {
+       var el = $(this);
+       $("<option />", {
+           "value"   : el.attr("href"),
+           "text"    : el.text()
+       }).appendTo("nav select");
+      });
+      
+	   // To make dropdown actually work
+	   // To make more unobtrusive: http://css-tricks.com/4064-unobtrusive-page-changer/
+      $("nav select").change(function() {
+        window.location = $(this).find("option:selected").val();
+      });
+	 
+	 });
+	</script>
+		<title></title>
+	</head>
+	<body>
+		<nav> 
+  	<ul> 
+  		<li><a href="#" class="active">Home</a></li> 
+  		<li><a href="#books">Plant</a></li> 
+  		<li><a href="#blog">Harvest</a></li> 
+  		<li><a href="#about">Trade</a></li> 
+  		<li><a href="#support">Support</a></li> 
+    </ul>
+  	
+  </nav>
+	<div class="wrapper">
+	  <header class="header">
+  &nbsp;
+	  </header>
+	  <article class="main">
+	    <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>  
+	  </article>
+	  <aside class="aside aside-1">Planted</aside>
+	  <aside class="aside aside-2">Inventory</aside>
+	  <footer class="footer">search</footer>
+	</div>
+	</body>
+</html>
